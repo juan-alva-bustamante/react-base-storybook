@@ -10,6 +10,51 @@ Run the command `npm install` to install the dependencies
 
 Run the command `npm run storybook` to serve the components in [localhost:6006](localhost:6006)
 
+## Structure for create components `src/components/{componentFolderName}`
+
+Create new folder inside `src/components/{componentFolderName}`
+
+Create the next files structure with the component name:
+
+```
+├── src\
+│   ├── components\
+│   │   ├── src\components\{componentFolderName}\
+│   │   │   └── {componentName}.stories.tsx
+│   │   │   └── {componentName}.tsx
+│   │   │   └── index.ts
+│   │   ├── src\components\{componentFolderName}\
+│   │   │   └── {componentName}.stories.tsx
+│   │   │   └── {componentName}.tsx
+│   │   │   └── index.ts
+│   │   ├── index.tsx
+└── README.md (The main readme)
+```
+
+
+Modify the `src/components/index.ts` file:
+
+```angular2html
+export { default as {componentFolderName} } from './{componentFolderName}';
+```
+
+This is an example of structure and export component file:
+```
+This is an structure example:
+├── src\
+│   ├── components\
+│   │   ├── src\components\button\
+│   │   │   └── button.stories.tsx
+│   │   │   └── button.tsx
+│   │   │   └── index.ts
+└── README.md (The main readme)
+```
+
+
+```angular2html
+export { default as Button } from './button';
+```
+
 # Prepare project to publish to [npm](https://www.npmjs.com/)
 
 To publish to npm is required to have an account in [npm](https://www.npmjs.com/)
