@@ -1,23 +1,41 @@
 {
-  "name": "reclutalia-components",
-  "version": "0.0.6",
+  "name": "reclutalia-react-tw-components",
+  "version": "0.0.11",
   "private": false,
   "main": "lib/index.js",
   "dependencies": {
-    "web-vitals": "^1.0.1"
+    "@tailwindcss/postcss7-compat": "^2.1.4",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.3",
+    "adjust-sourcemap-loader": "^4.0.0",
+    "classnames": "^2.2.6",
+    "craco": "0.0.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^5.0.0",
+    "node-sass-chokidar": "^1.5.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^8.3.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.3",
+    "resolve-url-loader": "^4.0.0",
+    "sass-loader": "^12.0.0",
+    "scss": "^0.2.4",
+    "typescript": "^4.3.2",
+    "web-vitals": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc",
+    "build:tailwind": "postcss ./src/scss/base.scss -o src/index.scss",
+    "clean": "rmdir /s lib && rmdir /s storybook-static",
+    "build": "npm run clean && tsc --build ./tsconfig.json && npm run copy-files",
+    "copy-files": "copyfiles -u 1 src/**/*.scss lib/",
+    "build:storybook": "build-storybook -s public",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "copy-files": "copyfiles --up 1 src src/assets/* lib/*",
     "create-component": "mkdirp ./src/components/newComponent && type NUL > ./src/components/newComponent/newComponent.tsx && type NUL > ./src/components/newComponent/newComponent.stories.tsx && type NUL > ./src/components/newComponent/index.tsx"
-  },
-  "config": {
-    "myPort": "8080"
   },
   "eslintConfig": {
     "extends": [
@@ -48,12 +66,16 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/node-logger": "^6.2.9",
-    "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.2.9",
+    "@storybook/addon-a11y": "^6.0.16",
+    "@storybook/addon-actions": "^6.1.20",
+    "@storybook/addon-docs": "^6.0.16",
+    "@storybook/addon-essentials": "^6.1.20",
+    "@storybook/addon-knobs": "^6.2.9",
+    "@storybook/addon-links": "^6.1.20",
+    "@storybook/node-logger": "^6.1.20",
+    "@storybook/preset-create-react-app": "^3.1.6",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.1.20",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -61,9 +83,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.1.2"
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",
+    "typings-for-css-modules-loader": "^1.7.0"
   }
 }

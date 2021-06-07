@@ -22,14 +22,25 @@
     "declaration": true,
     "sourceMap": true,
     "declarationMap": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      },
+      {
+        "name": "tailwindcss"
+      },
+      {
+        "name": "autoprefixer"
+      }
+    ]
   },
   "include": [
-    "src"
+    "src/**/*",
+    "src/components/**/*",
+    "src/**/*.scss"
   ],
   "exclude": [
-    "**/*.stories.tsx",
-    "**/*.test.ts",
-    "**/*.test.tss",
-    "./src/setupTest.ts",
+    "node_modules",
+    "**/*.stories.tsx"
   ]
 }
